@@ -1,5 +1,12 @@
+import sys
+import re
 import csv
 
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.stem import LancasterStemmer
+
+from collections import defaultdict
 
 class AllEssaysFile():
     
