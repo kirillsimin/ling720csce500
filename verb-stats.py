@@ -9,7 +9,7 @@ import sys
 #from essayclasses.EssayText import EssayText
 #from essayclasses.ASentence import ASentence
 
-from essayclasses import AllEssaysFile
+from essayclasses.AllEssaysFile import AllEssaysFile
 
 
 
