@@ -5,6 +5,7 @@ import csv
 import nltk
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
+from essayclasses.asentence import ASentence
 
 from collections import defaultdict
 

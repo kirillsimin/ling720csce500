@@ -11,3 +11,5 @@ for file in files:
 
 
 __all__ = essayClasses
+
+print (__all__)

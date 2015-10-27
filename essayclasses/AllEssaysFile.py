@@ -10,10 +10,16 @@ from collections import defaultdict
 
 class AllEssaysFile():
     
+    
  
     
     def __init__(self,theFile):
 
+        global exportedDB
+        exportedDB = 'data/all-essays.csv'
+        global studentData
+        studentData = 'data/students with countries - existing.txt'
+    
         self.csvfile = open(theFile, "r")
         self.readerAllEssaysInfo = csv.reader(self.csvfile, delimiter=',', quotechar='"')
 
