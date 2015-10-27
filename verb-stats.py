@@ -1,15 +1,11 @@
-exportedDB = 'data/all-essays.csv'
-studentData = 'data/students with countries - existing.txt'
+
 
 import sys
 
 
-
-#from essayclasses.AllEssaysFile import AllEssaysFile
-#from essayclasses.EssayText import EssayText
-#from essayclasses.ASentence import ASentence
-
-from essayclasses.AllEssaysFile import AllEssaysFile
+from essayclasses.allessaysfile import AllEssaysFile
+from essayclasses.asentence import ASentence
+from essayclasses.essaytext import EssayText
 
 
 
@@ -38,7 +34,7 @@ nonArabicQVerbs = 0
 arabicDTs = 0
 nonArabicDTs = 0
 
-sys.exit()
+
 
 
 # run through each Arabic Essay
