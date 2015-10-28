@@ -1,24 +1,39 @@
-import sys
+"""
+#
+#
+#  @author: Kirill Simin
+#
+#
+#
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+"""
+
+
+
+
 import re
 import csv
 
-import nltk
-from nltk.stem import PorterStemmer
-from nltk.stem import LancasterStemmer
 
-from collections import defaultdict
+
+global exportedDB
+exportedDB = 'data/all-essays.csv'
+global studentData
+studentData = 'data/students with countries - existing.txt'
+
 
 class AllEssaysFile():
     
-    
- 
-    
     def __init__(self,theFile):
-
-        global exportedDB
-        exportedDB = 'data/all-essays.csv'
-        global studentData
-        studentData = 'data/students with countries - existing.txt'
     
         self.csvfile = open(theFile, "r")
         self.readerAllEssaysInfo = csv.reader(self.csvfile, delimiter=',', quotechar='"')
@@ -36,10 +51,9 @@ class AllEssaysFile():
         #for self.row in self.essaysInfo:
         #    print(self.row[2])
 
-
-
-   ##### RETURNS A LIST OF ARABIC SPEAKERS' ESSAY FULL INFO #####
+   
     def getArabicEssays(self):
+        """ RETURNS A LIST OF ARABIC SPEAKERS' ESSAY FULL INFO """
         
         theEssays = []
         self.csvfile = open(studentData, "rU")
@@ -74,12 +88,10 @@ class AllEssaysFile():
         return theEssays
         
         
-        
-        
-        
 
-    ##### RETURNS A LIST OF NON-ARABIC SPEAKERS' ESSAY FULL INFO #####
+    
     def getNonArabicEssays(self):
+        """ RETURNS A LIST OF NON-ARABIC SPEAKERS' ESSAY FULL INFO """
         
         theEssays = []
         self.csvfile = open(studentData, "rU")
@@ -116,9 +128,10 @@ class AllEssaysFile():
         
 
      
-   ##### RETURNS A LIST OF ARABIC SPEAKERS' ESSAY TEXTS ONLY #####
+   
     def getArabicEssaysText(self):
-        
+        """ RETURNS A LIST OF ARABIC SPEAKERS' ESSAY TEXTS ONLY """
+     
         theEssays = []
         self.csvfile = open(studentData, "rU")
         self.readerStudentInfo = csv.reader(self.csvfile, delimiter='\t')
@@ -156,8 +169,9 @@ class AllEssaysFile():
         
         
 
-   ##### RETURNS A LIST OF ARABIC SPEAKERS' ESSAY TEXTS ONLY #####
+   
     def getNonArabicEssaysText(self):
+        """ RETURNS A LIST OF ARABIC SPEAKERS' ESSAY TEXTS ONLY """
         
         theEssays = []
         self.csvfile = open(studentData, "r")
@@ -196,8 +210,9 @@ class AllEssaysFile():
 
        
         
-    ##### RETURNS ONLY TEXTS OF ALL ESSAYS #####
+    
     def getAllTexts(self):
+        """ RETURNS ONLY TEXTS OF ALL ESSAYS """
         essayTexts = []
         for self.row in self.essaysInfo:
             #print(self.row[2])

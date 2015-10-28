@@ -1,13 +1,31 @@
-import sys
-import re
-import csv
+"""
+#
+#
+#  @author: Kirill Simin
+#
+#
+#
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+"""
+
+
 
 import nltk
-from nltk.stem import PorterStemmer
-from nltk.stem import LancasterStemmer
+#from nltk.stem import PorterStemmer
+#from nltk.stem import LancasterStemmer
+
 from essayclasses.asentence import ASentence
 
-from collections import defaultdict
+
 
 class EssayText:
     def __init__(self,theText):
@@ -17,8 +35,10 @@ class EssayText:
 
 
 
-    ##### RETURNS A LIST OF QUESTIONS #####
+
     def getQuestions(self):
+        """ RETURNS A LIST OF QUESTIONS """
+        
         listQuestions = []
         for self.sentence in self.sentences:
             if '?' in self.sentence:
@@ -28,8 +48,10 @@ class EssayText:
 
         
         
-    ##### RETURNS THE WORD COUNT OF THE ESSAY ######            
+    
     def countWords(self):
+        """ RETURNS THE WORD COUNT OF THE ESSAY """
+        
         self.wordCount = 0
         #self.theEssay = EssayText(self.theText)
         for sentence in (self.sentences):
@@ -39,8 +61,10 @@ class EssayText:
         return self.wordCount
         
 
-    ##### RETURNS THE DETERMINER COUNT OF THE ESSAY ######            
+    
     def countDTs(self):
+        """ RETURNS THE DETERMINER COUNT OF THE ESSAY """
+        
         self.dtCount = 0
         #self.theEssay = EssayText(self.theText)
         for sentence in (self.sentences):

@@ -1,13 +1,31 @@
-import sys
-import re
-import csv
+"""
+#
+#
+#  @author: Kirill Simin
+#
+#
+#
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+"""
+
+
+
 
 import nltk
 from nltk.stem import PorterStemmer
-from nltk.stem import LancasterStemmer
 
 
-from collections import defaultdict
+
+
 
 
 class ASentence:
@@ -20,14 +38,18 @@ class ASentence:
         
     
     
-    ##### TOKENIZES THE SENTENCE #####
+    
     def getTokens(self):
+        """ TOKENIZES THE SENTENCE """
+        
         return self.theSentenceTokenized
     
     
     
-    ##### RETURNS THE NUMBER OF VERBS IN THE SENTENCE #####
+    
     def countVerbs(self):
+        """ RETURNS THE NUMBER OF VERBS IN THE SENTENCE """
+        
         self.verbCount = 0
         #print(self.theQuestionTokenized)
         for self.word, self.part in self.theSentenceTokenized:
@@ -37,8 +59,10 @@ class ASentence:
         return self.verbCount
 
 
-    ##### RETURNS THE NUMBER OF DETERMINERS IN THE SENTENCE #####
+    
     def countDTs(self):
+        """ RETURNS THE NUMBER OF DETERMINERS IN THE SENTENCE """
+        
         self.dtCount = 0
         #print(self.theQuestionTokenized)
         for self.word, self.part in self.theSentenceTokenized:
@@ -47,10 +71,10 @@ class ASentence:
         #print('{} determiners in this sentence'.format(self.dtCount))
         return self.dtCount
         
-        
     
-    ##### RETURNS A LIST: [STEM, WORD, PART OF SPEECH] #####
     def getVerbs(self):
+        """ RETURNS A LIST: [STEM, WORD, PART OF SPEECH] """
+        
         sentenceVerbs = []
         
         for self.word, self.part in self.theSentenceTokenized:
