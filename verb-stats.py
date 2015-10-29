@@ -5,8 +5,9 @@ import sys
 
 from essayclasses.allessaysfile import AllEssaysFile
 from essayclasses.asentence import ASentence
-from essayclasses.essaytext import EssayText
+from essayclasses.anessay import AnEssay
 
+exportedDB = 'data/all-essays.csv'
 
 
 allEssays = AllEssaysFile(exportedDB)
@@ -20,8 +21,8 @@ allEssays = AllEssaysFile(exportedDB)
    ###### COUNTS WORDS PER ESSAY, DTs IN SENTENCES, VERBS IN QUESTIONS
 
 
-arabicEssaysText = allEssays.getArabicEssaysText()
-nonArabicEssaysText = allEssays.getNonArabicEssaysText()
+arabicEssaysText = allEssays.getArabicEssays()
+nonArabicEssaysText = allEssays.getNonArabicEssays()
 
 
 
@@ -31,26 +32,26 @@ nonArabicWords = 0
 arabicQVerbs = 0
 nonArabicQVerbs = 0
 
-arabicDTs = 0
-nonArabicDTs = 0
+#arabicDTs = 0
+#nonArabicDTs = 0
 
 
 
 
 # run through each Arabic Essay
 
-for aText in arabicEssaysText:
+for anEssay in arabicEssaysText:
     
     print('\nESSAY:\n')
         
-    thisText = EssayText(aText)
+    thisEssay = AnEssay(anEssay)
 
-    arabicWords += thisText.countWords()
+    arabicWords += thisEssay.countWords()
     
-    arabicDTs += thisText.countDTs()
+    #arabicDTs += thisText.countDTs()
     
     # extracts questions only, counts verbs
-    questions = thisText.getQuestions()
+    questions = thisEssay.getQuestions()
     for question in questions:
         thisQuestion = ASentence(question)
         arabicQVerbs += thisQuestion.countVerbs()
@@ -58,17 +59,18 @@ for aText in arabicEssaysText:
 
 
 
+
 # run through each Non-Arabic Essay
 
-for aText in nonArabicEssaysText:
+for anEssay in nonArabicEssaysText:
     
     print('\nESSAY:\n')
     
-    thisText = EssayText(aText)
+    thisText = AnEssay(anEssay)
 
     nonArabicWords += thisText.countWords()
     
-    nonArabicDTs += thisText.countDTs()
+    #nonArabicDTs += thisText.countDTs()
     
     
     # extracts questions only, counts verbs
@@ -93,8 +95,8 @@ nonArabicQVerbFreq = nonArabicQVerbs / len(nonArabicEssaysText)
 arabicWordsPerEssay = arabicWords / len(arabicEssaysText)
 nonArabicWordsPerEssay = nonArabicWords / len(nonArabicEssaysText)
 
-arabicDTsPerEssay = arabicDTs / len(arabicEssaysText)
-nonArabicDTsPerEssay = nonArabicDTs / len(nonArabicEssaysText)
+#arabicDTsPerEssay = arabicDTs / len(arabicEssaysText)
+#nonArabicDTsPerEssay = nonArabicDTs / len(nonArabicEssaysText)
 
 print('\n############## OUTPUT ###########\n')
 
@@ -109,8 +111,8 @@ print()
 print("ARABIC: {} verbs in questions per essay.".format(arabicQVerbFreq))
 print("NON-ARABIC: {} verbs in questions per essay.".format(nonArabicQVerbFreq))
  
-print()
+#print()
 
-print("ARABIC: {} determiners per essay.".format(arabicDTsPerEssay))
-print("NON-ARABIC: {} determiners per essay.".format(nonArabicDTsPerEssay))
+#print("ARABIC: {} determiners per essay.".format(arabicDTsPerEssay))
+#print("NON-ARABIC: {} determiners per essay.".format(nonArabicDTsPerEssay))
 
