@@ -18,6 +18,7 @@
 """
 
 
+import csv
 
 import nltk
 #from nltk.stem import PorterStemmer
@@ -25,6 +26,7 @@ import nltk
 
 from essayclasses.asentence import ASentence
 
+studentData = 'data/students with countries - existing.txt'
 
 
 class AnEssay:
@@ -32,7 +34,58 @@ class AnEssay:
 
         
         self._theText = theEssay[6]
+        self._theEssay = theEssay
 
+    def getGrade(self):
+        """ RETURNS THE ESSAYS'S FINAL GRADE """
+        self._theGrade = 0
+        
+        self._average = self._theEssay[37]
+        self._override = self._theEssay[43]
+        
+        if float(self._override) != 0:
+            return self._override
+        else:
+            return self._average
+        
+
+    def isArabic(self):
+        """ RETURNS A BOOLEAN IF THE AUTHOR'S L1 IS ARABIC """
+        
+        self._theEssays = []
+        self._isArabic = bool
+        
+        self._csvfile = open(studentData, "rU")
+        self._readerStudentInfo = csv.reader(self._csvfile, delimiter='\t')
+        
+        # list works better than csv.reader object
+        self._studentInfo = []
+        for i in self._readerStudentInfo:
+            self._studentInfo.append(i)
+
+        ## studentInfo[0] is the ID
+        ## studentInfo[3] is the country
+        ##
+        ## theEssay[2] is the ID
+        ## theEssay[6] is the essay
+
+
+                
+        for self._rowStudentInfo in self._studentInfo:
+            
+            if self._rowStudentInfo[0].replace('-','') == \
+            self._theEssay[2]:
+                
+                if self._rowStudentInfo[3] == 'Saudi Arabia' or\
+                self._rowStudentInfo[3] == 'Oman' or\
+                self._rowStudentInfo[3] == 'Iraq':
+                
+                    self._isArabic = True
+                else:
+                    self._isArabic = False
+
+        return self._isArabic
+        
 
 
 

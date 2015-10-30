@@ -17,9 +17,27 @@ import sys
 #==============================================================================
 
 
+#from nltk.parse import stanford
+
+
 import essayclasses.allessaysfile
+import essayclasses.anessay
 
 exportedDB = 'data/all-essays.csv'
 
-allEssays =  essayclasses.allessaysfile.AllEssaysFile(exportedDB)
+allEssaysFile =  essayclasses.allessaysfile.AllEssaysFile(exportedDB)
+allEssays = allEssaysFile.essaysList()
+
+
+
+for anEssay in allEssays:
+    thisEssay = essayclasses.anessay.AnEssay(anEssay)
+    if thisEssay.isArabic():
+        print(thisEssay.getGrade())
+
+
+auxiliaries = ['be', 'am', 'are', 'is', 'was', 'were', 'being', 'can',
+               'could', 'do', 'did', 'does', 'doing', 'have', 'had',
+               'has', 'having', 'may', 'might', 'must', 'shall', 'should',
+               'will', 'would']
 

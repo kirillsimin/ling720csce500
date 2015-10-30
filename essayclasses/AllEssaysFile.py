@@ -23,11 +23,10 @@
 import re
 import csv
 
+from essayclasses.anessay import AnEssay
 
 
-global exportedDB
 exportedDB = 'data/all-essays.csv'
-global studentData
 studentData = 'data/students with countries - existing.txt'
 
 
@@ -51,6 +50,8 @@ class AllEssaysFile():
         #for self._row in self._essaysInfo:
         #    print(self._row[2])
 
+    def essaysList(self):
+        return self._essaysInfo
    
     def getArabicEssays(self):
         """ RETURNS A LIST OF ARABIC SPEAKERS' ESSAY FULL INFO """
