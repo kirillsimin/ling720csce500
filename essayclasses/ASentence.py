@@ -31,18 +31,19 @@ from nltk.stem import PorterStemmer
 class ASentence:
     
     def __init__(self,theSentence):
-        self.theSentence = theSentence.lower()
-        self.theSentenceTokenized = nltk.tokenize.word_tokenize(self.theSentence)
-        self.theSentenceTokenized = nltk.pos_tag(self.theSentenceTokenized)
-        #print(self.theQuestionTokenized)
+        self._theSentence = theSentence
+        self._theSentenceTokenized = nltk.tokenize.word_tokenize(self._theSentence)
+        self._theSentenceTokenized = nltk.pos_tag(self._theSentenceTokenized)
+        #print(self._theQuestionTokenized)
         
     
-    
+    def __str__(self):
+        return(self._theSentence)
     
     def getTokens(self):
         """ TOKENIZES THE SENTENCE """
         
-        return self.theSentenceTokenized
+        return self._theSentenceTokenized
     
     
     
@@ -50,41 +51,57 @@ class ASentence:
     def countVerbs(self):
         """ RETURNS THE NUMBER OF VERBS IN THE SENTENCE """
         
-        self.verbCount = 0
-        #print(self.theQuestionTokenized)
-        for self.word, self.part in self.theSentenceTokenized:
-            if 'VB' in self.part:
-                self.verbCount += 1
-        #print('{} verbs in this sentence'.format(self.verbCount))
-        return self.verbCount
+        self._verbCount = 0
+        #print(self._theQuestionTokenized)
+        for self._word, self._part in self._theSentenceTokenized:
+            if 'VB' in self._part:
+                self._verbCount += 1
+        #print('{} verbs in this sentence'.format(self._verbCount))
+        return self._verbCount
 
 
     
     def countDTs(self):
         """ RETURNS THE NUMBER OF DETERMINERS IN THE SENTENCE """
         
-        self.dtCount = 0
-        #print(self.theQuestionTokenized)
-        for self.word, self.part in self.theSentenceTokenized:
-            if 'DT' in self.part:
-                self.dtCount += 1
-        #print('{} determiners in this sentence'.format(self.dtCount))
-        return self.dtCount
+        self._dtCount = 0
+        #print(self._theQuestionTokenized)
+        for self._word, self._part in self._theSentenceTokenized:
+            if 'DT' in self._part:
+                self._dtCount += 1
+        #print('{} determiners in this sentence'.format(self._dtCount))
+        return self._dtCount
+
+    def getDTs(self):
+        """ RETURNS A LIST: [STEM, WORD, PART OF SPEECH] """
         
+        self._sentenceDTs = []
+        
+        for self._word, self._part in self._theSentenceTokenized:
+            if 'DT' in self._part:
+                self._tempList = []
+                self._stemWord = PorterStemmer().stem_word(self._word)
+                self._tempList.append(self._stemWord)
+                self._tempList.append(self._word)
+                self._tempList.append(self._part)
+
+                self._sentenceDTs.append(self._tempList)
+                 
+        return self._sentenceDTs        
     
     def getVerbs(self):
         """ RETURNS A LIST: [STEM, WORD, PART OF SPEECH] """
         
-        sentenceVerbs = []
+        self._sentenceVerbs = []
         
-        for self.word, self.part in self.theSentenceTokenized:
-            if 'VB' in self.part:
-                self.tempList = []
-                self.stemWord = PorterStemmer().stem_word(self.word)
-                self.tempList.append(self.stemWord)
-                self.tempList.append(self.word)
-                self.tempList.append(self.part)
+        for self._word, self._part in self._theSentenceTokenized:
+            if 'VB' in self._part:
+                self._tempList = []
+                self._stemWord = PorterStemmer().stem_word(self._word)
+                self._tempList.append(self._stemWord)
+                self._tempList.append(self._word)
+                self._tempList.append(self._part)
 
-                sentenceVerbs.append(self.tempList)
+                self._sentenceVerbs.append(self._tempList)
                  
-        return sentenceVerbs
+        return self._sentenceVerbs

@@ -35,6 +35,9 @@ class AnEssay:
         
         self._theText = theEssay[6]
         self._theEssay = theEssay
+        
+    def getText(self):
+        return self._theText
 
     def getGrade(self):
         """ RETURNS THE ESSAYS'S FINAL GRADE """
@@ -44,13 +47,13 @@ class AnEssay:
         self._override = self._theEssay[43]
         
         if float(self._override) != 0:
-            return self._override
+            return float(self._override)
         else:
-            return self._average
+            return float(self._average)
         
 
     def isArabic(self):
-        """ RETURNS A BOOLEAN IF THE AUTHOR'S L1 IS ARABIC """
+        """ RETURNS TRUE IF THE AUTHOR'S L1 IS ARABIC """
         
         self._theEssays = []
         self._isArabic = bool
@@ -68,8 +71,6 @@ class AnEssay:
         ##
         ## theEssay[2] is the ID
         ## theEssay[6] is the essay
-
-
                 
         for self._rowStudentInfo in self._studentInfo:
             
@@ -101,8 +102,16 @@ class AnEssay:
 
         return self._listQuestions
 
+    def getSentences(self):
+        """ RETURNS A LIST OF SENTENCES """
         
+        self._sentences = nltk.sent_tokenize(self._theText)
         
+        self._listSentences = []
+        for self._sentence in self._sentences:
+            self._listSentences.append(self._sentence.strip())
+
+        return self._listSentences
     
     def countWords(self):
         """ RETURNS THE WORD COUNT OF THE ESSAY """

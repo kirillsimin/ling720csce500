@@ -5,11 +5,30 @@
 ARABIC: 3254.144578313253 words per essay.
 NON-ARABIC: 3703.689189189189 words per essay.
 
-ARABIC: 2.2771084337349397 verbs in questions per essay.
-NON-ARABIC: 1.6216216216216217 verbs in questions per essay.
+Arabic Sentences:  2043
+Non-Arabic Sentences:  2062
 
-ARABIC: 62.325301204819276 determiners per essay.
-NON-ARABIC: 68.85135135135135 determiners per essay.
+Arabic verbs per question: 2.2771084337349397 
+Non-Arabic verbs per question: 1.6216216216216217
+
+Arabic determiners per essay: 62.325301204819276 
+Non-Arabicdeterminers per essay: 68.85135135135135 
+
+Arabic Aux per Question:  1.0769230769230769
+Non-Arabic Aux per Question:  0.825
+
+Arabic Modals per Question:  0.3076923076923077
+Non-Arabic Modals per Question:  0.25
+
+Arabic Verbs per Sentence:  3.9990210474791974
+Non-Arabic Verbs per Sentence:  3.9209505334626575
+
+Arabic A's per Sentence:  0.3524229074889868
+Arabic The's per Sentence:  1.3279490944689183
+
+Non-Arabic As per Sentence:  0.46750727449078566
+Arabic The's per Sentence:  1.1823472356935014
+
 
 
 ARABIC GRADES:
