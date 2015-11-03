@@ -82,35 +82,35 @@ for anEssay in allEssays:
             arSent += 1
             arA += indefArt
             arThe += defArt
-            arDT += thisSentence.countDTs()
+            #arDT += thisSentence.countDTs()
             #print ('Sentences: ', arSent)
             #print ('Verbs: ', arDT)
         else:
             narSent += 1
             narA += indefArt
             narThe += defArt
-            narDT += thisSentence.countDTs()
+            #narDT += thisSentence.countDTs()
             #print ('Sentences: ', narSent)
             #print ('Verbs: ', narDT)
 
     if thisEssay.isArabic():
         print('Sentences: ',arSent)
-        print('DTs: ',arDT)
+        #print('DTs: ',arDT)
         print('A\'s: ', arA)
         print('The\'s: ', arThe)
         arAtotal += arA
         arTheTotal += arThe
-        arDTtotal += arDT
+        #arDTtotal += arDT
         arSentTotal += arSent
         
     else:
         print('Sentences: ',narSent)
-        print('DTs: ', narDT)
+        #print('DTs: ', narDT)
         print('As: ', narA)
         print('The\'s: ', narThe)
         narAtotal += narA
         narTheTotal += narThe
-        narDTtotal += narDT
+        #narDTtotal += narDT
         narSentTotal += narSent
     
     count += 1
@@ -118,13 +118,13 @@ for anEssay in allEssays:
 print('')
 
 print ('Arabic Sentences: ',arSentTotal)
-print ('Arabic DTs per Sentence: ', arDTtotal/arSentTotal)
+#print ('Arabic DTs per Sentence: ', arDTtotal/arSentTotal)
 print ('Arabic A\'s per Sentence: ', arAtotal/arSentTotal)
 print ('Arabic The\'s per Sentence: ', arTheTotal/arSentTotal)
 
 print('')
 
 print ('Non-Arabic Sentences: ',narSentTotal)
-print ('Non-Arabic DTs per Sentence: ', narDTtotal/narSentTotal)
+#print ('Non-Arabic DTs per Sentence: ', narDTtotal/narSentTotal)
 print ('Non-Arabic As per Sentence: ', narAtotal/narSentTotal)
-print ('Non-Arabic The\'s per Sentence: ', narTheTotal/narSentTotal)
+print ('Arabic The\'s per Sentence: ', narTheTotal/narSentTotal)

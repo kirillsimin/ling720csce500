@@ -8,6 +8,7 @@ Created on Tue Oct 27 23:52:51 2015
 
 
 import sys
+import csv
 
 
 #from nltk.parse import stanford
@@ -35,6 +36,9 @@ narDTtotal = 0
 narAtotal = 0
 narTheTotal = 0
 narSentTotal = 0
+
+listAsInSentences = []
+listAsInSentences.append(['arabic','non-arabic'])
 
 
 count = 0
@@ -68,6 +72,7 @@ for anEssay in allEssays:
         
         indefArt = 0
         defArt = 0
+        listArabicNonArabic = [0,0]
 
         dts = thisSentence.getDTs()
         for dt in dts:
@@ -82,49 +87,63 @@ for anEssay in allEssays:
             arSent += 1
             arA += indefArt
             arThe += defArt
-            arDT += thisSentence.countDTs()
+            listArabicNonArabic[0] = indefArt
+            #arDT += thisSentence.countDTs()
             #print ('Sentences: ', arSent)
             #print ('Verbs: ', arDT)
         else:
             narSent += 1
             narA += indefArt
             narThe += defArt
-            narDT += thisSentence.countDTs()
+            listArabicNonArabic[1] = indefArt
+            #narDT += thisSentence.countDTs()
             #print ('Sentences: ', narSent)
             #print ('Verbs: ', narDT)
+            
+        listAsInSentences.append(listArabicNonArabic)
 
     if thisEssay.isArabic():
         print('Sentences: ',arSent)
-        print('DTs: ',arDT)
+        #print('DTs: ',arDT)
         print('A\'s: ', arA)
         print('The\'s: ', arThe)
         arAtotal += arA
         arTheTotal += arThe
-        arDTtotal += arDT
+        #arDTtotal += arDT
         arSentTotal += arSent
         
     else:
         print('Sentences: ',narSent)
-        print('DTs: ', narDT)
+        #print('DTs: ', narDT)
         print('As: ', narA)
         print('The\'s: ', narThe)
         narAtotal += narA
         narTheTotal += narThe
-        narDTtotal += narDT
+        #narDTtotal += narDT
         narSentTotal += narSent
     
     count += 1
 
+
+with open("output.csv", "w", newline='\n') as f:
+    writer = csv.writer(f)
+    
+    for i in listAsInSentences:
+        writer.writerows([i])
+
+
+sys.exit()
+
 print('')
 
 print ('Arabic Sentences: ',arSentTotal)
-print ('Arabic DTs per Sentence: ', arDTtotal/arSentTotal)
+#print ('Arabic DTs per Sentence: ', arDTtotal/arSentTotal)
 print ('Arabic A\'s per Sentence: ', arAtotal/arSentTotal)
 print ('Arabic The\'s per Sentence: ', arTheTotal/arSentTotal)
 
 print('')
 
 print ('Non-Arabic Sentences: ',narSentTotal)
-print ('Non-Arabic DTs per Sentence: ', narDTtotal/narSentTotal)
+#print ('Non-Arabic DTs per Sentence: ', narDTtotal/narSentTotal)
 print ('Non-Arabic As per Sentence: ', narAtotal/narSentTotal)
-print ('Non-Arabic The\'s per Sentence: ', narTheTotal/narSentTotal)
+print ('Arabic The\'s per Sentence: ', narTheTotal/narSentTotal)
