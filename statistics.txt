@@ -28,12 +28,15 @@ Non-Arabic Verbs per Sentence:  3.9209505334626575
 
 Arabic A's per Sentence:  0.3524229074889868
 Non-Arabic As per Sentence:  0.46750727449078566
+(Two-tailed; The T-value is 4.868383. The P-Value is < .00001. The result is significant at p < .01.)
 
 Arabic The's per Sentence:  1.3279490944689183
 Non-Arabic The's per Sentence:  1.1823472356935014
+(Two-tailed; The T-value is 2.466288. The P-Value is .013672. The result is significant at p < .05.)
 
 Arabic DTs per Sentence:  2.5119921683798334
 Non-Arabic DTs per Sentence:  2.454898157129001
+(Two-tailed; The T-value is 0.38563. The P-Value is .699781. The result is not significant at p < .10.)
 
 
 

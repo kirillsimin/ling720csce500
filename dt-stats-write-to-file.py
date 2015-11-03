@@ -40,6 +40,12 @@ narSentTotal = 0
 listAsInSentences = []
 listAsInSentences.append(['arabic','non-arabic'])
 
+listThesInSentences = []
+listThesInSentences.append(['arabic','non-arabic'])
+
+listDTsInSentences = []
+listDTsInSentences.append(['arabic','non-arabic'])
+
 
 count = 0
 
@@ -72,7 +78,9 @@ for anEssay in allEssays:
         
         indefArt = 0
         defArt = 0
-        listArabicNonArabic = [0,0]
+        listArabicNonArabicAs = [0,0]
+        listArabicNonArabicThes = [0,0]
+        listArabicNonArabicDTs = [0,0]
 
         dts = thisSentence.getDTs()
         for dt in dts:
@@ -87,63 +95,68 @@ for anEssay in allEssays:
             arSent += 1
             arA += indefArt
             arThe += defArt
-            listArabicNonArabic[0] = indefArt
             #arDT += thisSentence.countDTs()
+            
+            listArabicNonArabicAs[0] = indefArt
+            listArabicNonArabicThes[0] = defArt
+            listArabicNonArabicDTs[0] = thisSentence.countDTs()
+            
             #print ('Sentences: ', arSent)
             #print ('Verbs: ', arDT)
         else:
             narSent += 1
             narA += indefArt
             narThe += defArt
-            listArabicNonArabic[1] = indefArt
             #narDT += thisSentence.countDTs()
+            
+            listArabicNonArabicAs[1] = indefArt
+            listArabicNonArabicThes[1] = defArt
+            listArabicNonArabicDTs[1] = thisSentence.countDTs()
+            
             #print ('Sentences: ', narSent)
             #print ('Verbs: ', narDT)
             
-        listAsInSentences.append(listArabicNonArabic)
+        listAsInSentences.append(listArabicNonArabicAs)
+        listThesInSentences.append(listArabicNonArabicThes)
+        listDTsInSentences.append(listArabicNonArabicDTs)
 
     if thisEssay.isArabic():
         print('Sentences: ',arSent)
-        #print('DTs: ',arDT)
+        print('DTs: ',arDT)
         print('A\'s: ', arA)
         print('The\'s: ', arThe)
-        arAtotal += arA
-        arTheTotal += arThe
+        #arAtotal += arA
+        #arTheTotal += arThe
         #arDTtotal += arDT
-        arSentTotal += arSent
+        #arSentTotal += arSent
         
     else:
         print('Sentences: ',narSent)
-        #print('DTs: ', narDT)
+        print('DTs: ', narDT)
         print('As: ', narA)
         print('The\'s: ', narThe)
-        narAtotal += narA
-        narTheTotal += narThe
+        #narAtotal += narA
+        #narTheTotal += narThe
         #narDTtotal += narDT
-        narSentTotal += narSent
+        #narSentTotal += narSent
     
     count += 1
 
 
-with open("output.csv", "w", newline='\n') as f:
+with open("dt-ind-art.csv", "w", newline='\n') as f:
     writer = csv.writer(f)
     
     for i in listAsInSentences:
         writer.writerows([i])
 
+with open("dt-def-art.csv", "w", newline='\n') as f:
+    writer = csv.writer(f)
+    
+    for i in listThesInSentences:
+        writer.writerows([i])
 
-sys.exit()
-
-print('')
-
-print ('Arabic Sentences: ',arSentTotal)
-#print ('Arabic DTs per Sentence: ', arDTtotal/arSentTotal)
-print ('Arabic A\'s per Sentence: ', arAtotal/arSentTotal)
-print ('Arabic The\'s per Sentence: ', arTheTotal/arSentTotal)
-
-print('')
-
-print ('Non-Arabic Sentences: ',narSentTotal)
-#print ('Non-Arabic DTs per Sentence: ', narDTtotal/narSentTotal)
-print ('Non-Arabic As per Sentence: ', narAtotal/narSentTotal)
-print ('Arabic The\'s per Sentence: ', narTheTotal/narSentTotal)
+with open("dt-all-dt.csv", "w", newline='\n') as f:
+    writer = csv.writer(f)
+    
+    for i in listDTsInSentences:
+        writer.writerows([i])
