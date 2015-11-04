@@ -12,6 +12,7 @@ import sys
 
 #from nltk.parse import stanford
 
+from collections import defaultdict
 
 import essayclasses.allessaysfile
 import essayclasses.anessay
@@ -22,26 +23,24 @@ exportedDB = 'data/all-essays.csv'
 allEssaysFile =  essayclasses.allessaysfile.AllEssaysFile(exportedDB)
 allEssays = allEssaysFile.essaysList()
 
-
-
 arDTtotal = 0
 arAtotal = 0
 arTheTotal = 0
 arSentTotal = 0
-
-
 
 narDTtotal = 0
 narAtotal = 0
 narTheTotal = 0
 narSentTotal = 0
 
+arDTdict = defaultdict(int)
+narDTdict = defaultdict(int)
 
 count = 0
 
 for anEssay in allEssays:
     
-    if count == 4 : break
+    #if count == 4 : break
     
     arDT = 0
     arA = 0
@@ -71,13 +70,18 @@ for anEssay in allEssays:
 
         dts = thisSentence.getDTs()
         for dt in dts:
-            dt = dt[0]
-            if dt.lower() == 'a' or dt.lower() == 'an':
+            dt = dt[0].lower()
+            
+            if dt == 'a' or dt == 'an':
                 indefArt += 1
-
-            if dt.lower() == 'the':
+            if dt == 'the':
                 defArt += 1
-
+            
+            if thisEssay.isArabic():
+                arDTdict[dt] += 1
+            else:
+                narDTdict[dt] += 1
+                
         if thisEssay.isArabic():
             arSent += 1
             arA += indefArt
@@ -115,8 +119,26 @@ for anEssay in allEssays:
     
     count += 1
 
-print('')
+arDTList = []
+tuplesDTsCount = arDTdict.items()
+for i in tuplesDTsCount:
+    if i[1] >= 10:
+        arDTList.append(i[::-1])
+    
+narDTList = []
+tuplesDTsCount = narDTdict.items()
+for i in tuplesDTsCount:
+    if i[1] >= 10:
+        narDTList.append(i[::-1])
 
+print('')
+print('Arabic DT\'s:')
+print(sorted(arDTList, reverse = True))
+print('')
+print('Non-Arabic DT\'s:')
+print(sorted(narDTList, reverse = True))
+
+print('')
 print ('Arabic Sentences: ',arSentTotal)
 print ('Arabic DTs per Sentence: ', arDTtotal/arSentTotal)
 print ('Arabic A\'s per Sentence: ', arAtotal/arSentTotal)

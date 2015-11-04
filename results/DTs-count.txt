@@ -1,0 +1,2 @@
+Arabic DTs:   [(2713, 'the'), (720, 'a'), (382, 'that'), (263, 'thi'), (229, 'some'), (193, 'these'), (179, 'which'), (120, 'all'), (79, 'an'), (66, 'ani'), (39, 'no'), (38, 'those'), (28, 'everi'), (20, 'each'), (16, 'anoth'), (12, 'both')]
+NonArabid Dts:[(2438, 'the'), (964, 'a'), (347, 'thi'), (333, 'that'), (212, 'some'), (157, 'which'), (154, 'all'), (106, 'these'), (87, 'an'), (48, 'those'), (44, 'everi'), (42, 'ani'), (41, 'no'), (34, 'each'), (19, 'both'), (12, 'anoth')]
