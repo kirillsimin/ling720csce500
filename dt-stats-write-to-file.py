@@ -10,9 +10,7 @@ Created on Tue Oct 27 23:52:51 2015
 import sys
 import csv
 
-
-#from nltk.parse import stanford
-
+from itertools import zip_longest
 
 import essayclasses.allessaysfile
 import essayclasses.anessay
@@ -136,31 +134,29 @@ for anEssay in allEssays:
     count += 1
 
 
+asInSentences = [arAsInSentences,narAsInSentences]
+asInSentences = list(zip_longest(*asInSentences, fillvalue=''))
 
-with open("results/dt-ar-ind-art.csv", "w", newline='\n') as f:
+thesInSentences = [arThesInSentences,narThesInSentences]
+thesInSentences = list(zip_longest(*thesInSentences, fillvalue=''))
+
+dtsInSentences = [arDTsInSentences,narDTsInSentences]
+dtsInSentences = list(zip_longest(*dtsInSentences, fillvalue=''))
+
+
+
+with open("results/dt-ind-art.csv", "w", newline='\n') as f:
     writer = csv.writer(f)
-    writer.writerows([arAsInSentences])
+    writer.writerows(asInSentences)
         
-with open("results/dt-nar-ind-art.csv", "w", newline='\n') as f:
+with open("results/dt-def-art.csv", "w", newline='\n') as f:
     writer = csv.writer(f)
-    writer.writerows([narAsInSentences])
+    writer.writerows(thesInSentences)
 
-with open("results/dt-ar-def-art.csv", "w", newline='\n') as f:
+with open("results/dt-all-dt.csv", "w", newline='\n') as f:
     writer = csv.writer(f)
-    writer.writerows([arThesInSentences])
+    writer.writerows(dtsInSentences)
 
-with open("results/dt-nar-def-art.csv", "w", newline='\n') as f:
-    writer = csv.writer(f)
-    writer.writerows([narThesInSentences])
-
-
-with open("results/dt-ar-all-dt.csv", "w", newline='\n') as f:
-    writer = csv.writer(f)
-    writer.writerows([arDTsInSentences])
-
-with open("results/dt-nar-all-dt.csv", "w", newline='\n') as f:
-    writer = csv.writer(f)
-    writer.writerows([narDTsInSentences])
 
 
 
