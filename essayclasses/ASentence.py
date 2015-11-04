@@ -105,3 +105,12 @@ class ASentence:
                 self._sentenceVerbs.append(self._tempList)
                  
         return self._sentenceVerbs
+
+
+    def posNgrams(self, n=2, pos='DT'):
+        """ RETURNS A LIST OF TOUPLES AROUND THE POS """
+        self._posNgram = []
+        for i in range(len(self._theSentenceTokenized)-n+1):
+            if self._theSentenceTokenized[i][1] == pos:
+                self._posNgram.append(self._theSentenceTokenized[i-n:i+(n+1)])
+        return self._posNgram
