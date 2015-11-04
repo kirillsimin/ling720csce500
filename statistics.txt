@@ -7,9 +7,6 @@ Non-Arabic words per essay: 3703.689189189189
 Arabic Sentences:  2043
 Non-Arabic Sentences:  2062
 
-Arabic determiners per essay: 62.325301204819276 
-Non-Arabic determiners per essay: 68.85135135135135 
-
 
 
 Arabic verbs per question: 2.2771084337349397 
@@ -26,9 +23,11 @@ Non-Arabic Modals per Question:  0.25
 Arabic Verbs per Sentence:  3.9990210474791974
 Non-Arabic Verbs per Sentence:  3.9209505334626575
 
-Arabic A's per Sentence:  0.3524229074889868
-Non-Arabic As per Sentence:  0.46750727449078566
-(Two-tailed; The T-value is 4.868383. The P-Value is < .00001. The result is significant at p < .01.)
+
+
+Arabic A's per Sentence:  0.3910915320606951
+Non-Arabic As per Sentence:  0.5096993210475267
+(Two-tailed; The T-value is 4.743683. The P-Value is < .00001. The result is significant at p < .01.)
 
 Arabic The's per Sentence:  1.3279490944689183
 Non-Arabic The's per Sentence:  1.1823472356935014

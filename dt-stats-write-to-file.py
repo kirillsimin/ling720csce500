@@ -85,7 +85,7 @@ for anEssay in allEssays:
         dts = thisSentence.getDTs()
         for dt in dts:
             dt = dt[0]
-            if dt.lower() == 'a':
+            if dt.lower() == 'a' or dt.lower() == 'an':
                 indefArt += 1
 
             if dt.lower() == 'the':
@@ -122,7 +122,7 @@ for anEssay in allEssays:
 
     if thisEssay.isArabic():
         print('Sentences: ',arSent)
-        print('DTs: ',arDT)
+        #print('DTs: ',arDT)
         print('A\'s: ', arA)
         print('The\'s: ', arThe)
         #arAtotal += arA
@@ -132,7 +132,7 @@ for anEssay in allEssays:
         
     else:
         print('Sentences: ',narSent)
-        print('DTs: ', narDT)
+        #print('DTs: ', narDT)
         print('As: ', narA)
         print('The\'s: ', narThe)
         #narAtotal += narA

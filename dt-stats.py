@@ -72,7 +72,7 @@ for anEssay in allEssays:
         dts = thisSentence.getDTs()
         for dt in dts:
             dt = dt[0]
-            if dt.lower() == 'a':
+            if dt.lower() == 'a' or dt.lower() == 'an':
                 indefArt += 1
 
             if dt.lower() == 'the':

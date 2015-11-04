@@ -34,13 +34,12 @@ for i in parsed_sentences:
     for k in i:
         print(k)
 
-#==============================================================================
-# # GUI
-# for line in parsed_sentences:
-#     for sentence in line:
-#         sentence.draw()
-#==============================================================================
+# GUI
+for line in parsed_sentences:
+    for sentence in line:
+        sentence.draw()
 
+sys.exit()
 
 st = StanfordPOSTagger(r'C:/stanford_data/english-bidirectional-distsim.tagger',r'C:/stanford_data/stanford-postagger.jar')
 
