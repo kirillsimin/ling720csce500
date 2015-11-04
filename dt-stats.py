@@ -41,7 +41,7 @@ count = 0
 
 for anEssay in allEssays:
     
-    #if count == 4 : break
+    if count == 4 : break
     
     arDT = 0
     arA = 0

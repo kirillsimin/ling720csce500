@@ -7,10 +7,6 @@ Created on Fri Oct 30 01:24:56 2015
 
 import sys
 
-
-#from nltk.parse import stanford
-
-
 import essayclasses.allessaysfile
 import essayclasses.anessay
 
