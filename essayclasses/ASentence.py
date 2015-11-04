@@ -109,8 +109,17 @@ class ASentence:
 
     def posNgrams(self, n=2, pos='DT'):
         """ RETURNS A LIST OF TOUPLES AROUND THE POS """
+        self._tempPOSNgram = []
         self._posNgram = []
+        self._posNewList = []
+        
         for i in range(len(self._theSentenceTokenized)-n+1):
             if self._theSentenceTokenized[i][1] == pos:
-                self._posNgram.append(self._theSentenceTokenized[i-n:i+(n+1)])
+                self._tempPOSNgram.append(self._theSentenceTokenized[i-n:i+(n+1)])
+        
+        for self._posList in self._tempPOSNgram:
+            for self._posTouple in self._posList:
+                self._posNewList.append(self._posTouple[::-1])
+            self._posNgram.append(self._posNewList)
+                
         return self._posNgram

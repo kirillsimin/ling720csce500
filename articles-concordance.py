@@ -45,14 +45,17 @@ for anEssay in allEssays:
         dtNgram = thisSentence.posNgrams()
 
         for dtListOfTouples in dtNgram:
-            print (dtListOfTouples)
+            
             if thisEssay.isArabic():
                 arDTlist.append(dtListOfTouples)
             else:
-                narDTlist.append(dtListOfTouples)    
+                narDTlist.append(dtListOfTouples)  
+            
+            print (dtListOfTouples)
 
     
     count += 1
+
     
 with open("results/dt-ar-concordance.csv", "w", newline='\n') as f:
     writer = csv.writer(f)
