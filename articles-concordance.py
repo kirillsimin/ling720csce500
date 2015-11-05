@@ -47,11 +47,19 @@ for anEssay in allEssays:
         for dtListOfTouples in dtNgram:
             
             if thisEssay.isArabic():
-                arDTlist.append(dtListOfTouples)
+                templist = []
+                for i in dtListOfTouples:
+                    templist.append(i[::-1])
+                arDTlist.append(templist)
             else:
-                narDTlist.append(dtListOfTouples)  
+                templist = []
+                for i in dtListOfTouples:
+                    templist.append(i[::-1])
+                narDTlist.append(templist)
             
-            print (dtListOfTouples)
+        print('')
+        for i in arDTlist:
+            print (i)
 
     
     count += 1
@@ -64,4 +72,3 @@ with open("results/dt-ar-concordance.csv", "w", newline='\n') as f:
 with open("results/dt-nar-concordance.csv", "w", newline='\n') as f:
     writer = csv.writer(f)
     writer.writerows(narDTlist)
-
