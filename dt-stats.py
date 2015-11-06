@@ -40,7 +40,7 @@ count = 0
 
 for anEssay in allEssays:
     
-    #if count == 4 : break
+    if count == 10 : break
     
     arDT = 0
     arA = 0
@@ -69,6 +69,7 @@ for anEssay in allEssays:
         defArt = 0
 
         dts = thisSentence.getDTs()
+        
         for dt in dts:
             dt = dt[0].lower()
             

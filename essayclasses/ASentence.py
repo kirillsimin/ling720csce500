@@ -110,15 +110,20 @@ class ASentence:
     def posNgrams(self, n=2, pos='DT'):
         """ RETURNS A LIST OF TOUPLES AROUND THE POS """
         self._posNgram = []
-
-
-        
+       
         for i in range(len(self._theSentenceTokenized)-n+1):
             if self._theSentenceTokenized[i][1] == pos: 
                 self._posNgram.append(self._theSentenceTokenized[i-n:i+(n+1)])
-        
-        for self._posList in self._posNgram:
-            for self._posTouple in self._posList:
-                self._posTouple = self._posTouple[::-1]
                 
         return self._posNgram
+        
+    def wordNgrams(self, n=2, word='that'):
+        """ RETURNS A LIST OF TOUPLES AROUND THE WORD """
+        self._wordNgram = []
+
+        for i in range(len(self._theSentenceTokenized)-n+1):
+            if self._theSentenceTokenized[i][0] == word: 
+                self._wordNgram.append(self._theSentenceTokenized[i-n:i+(n+1)])
+        
+                
+        return self._wordNgram

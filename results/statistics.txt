@@ -1,4 +1,4 @@
-
+ 2
 83 arabic essays and 74 non-arabic essays
 
 Arabic words per essay: 3254.144578313253 
